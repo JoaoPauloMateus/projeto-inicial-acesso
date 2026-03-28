@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nome": "Anderson Silva",
+    "email": "anderson@faculdade.edu",
+    "cargo": "Administrador de Sistemas",
+    "nivelAcesso": 1
+  },
+  {
+    "id": 2,
+    "nome": "Maria Souza",
+    "email": "maria@empresa.com",
+    "cargo": "Desenvolvedora Senior",
+    "nivelAcesso": 2
+  },
+  {
+    "id": 3,
+    "nome": "João Pedro",
+    "email": "joao@estagio.com",
+    "cargo": "Estagiário",
+    "nivelAcesso": 3
+  }
+]
