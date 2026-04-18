@@ -1,15 +1,15 @@
+
 import React, { useState } from 'react';
 import initialUsers from './users.json';
+
 
 export default function App() {
   const [users, setUsers] = useState(initialUsers);
   const [filtro, setFiltro] = useState('');
-
-  // Simulando um usuário logado (Mude o nível aqui para testar a trava de segurança)
-  const [usuarioLogado] = useState({
-    nome: "Anderson Silva",
-    nivelAcesso: 1
-  });
+  // Estado para armazenar o ID do usuário logado
+  const [usuarioLogadoId, setUsuarioLogadoId] = useState(initialUsers[0].id);
+  // Busca o usuário logado pelo ID
+  const usuarioLogado = users.find(u => u.id === usuarioLogadoId);
 
   // Função para pegar a cor da linha conforme o nível
   const corDoNivel = (nivel) => {
@@ -48,7 +48,20 @@ export default function App() {
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif', maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
       <h1>Sistema de Controle de Acesso</h1>
-      <p>Logado como: <strong>{usuarioLogado.nome}</strong> (Nível: {usuarioLogado.nivelAcesso})</p>
+      <div style={{ marginBottom: '10px' }}>
+        <label htmlFor="usuarioSelect">Logado como: </label>
+        <select
+          id="usuarioSelect"
+          value={usuarioLogadoId}
+          onChange={e => setUsuarioLogadoId(Number(e.target.value))}
+          style={{ fontSize: '16px', padding: '4px', marginRight: '8px' }}
+        >
+          {users.map(user => (
+            <option key={user.id} value={user.id}>{user.nome}</option>
+          ))}
+        </select>
+        <span>(Nível: {usuarioLogado.nivelAcesso})</span>
+      </div>
 
       <hr />
 
